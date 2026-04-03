@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  username     String        @unique
+  email        String        @unique
+  passwordHash String
+  firstName    String        @default("")
+  lastName     String        @default("")
+  role         String        @default("student") // student, faculty, admin
+  phone        String?
+  avatar       String?
+  bio          String?
+  createdAt    DateTime      @default(now())
+  achievements Achievement[]
+}
+
+model Achievement {
+  id           Int      @id @default(autoincrement())
+  title        String
+  type         String
+  organization String
+  date         String
+  status       String   @default("Pending") // Pending, Approved, Rejected
+  description  String?
+  skills       String   @default("[]") // JSON array stored as string
+  proofUrl     String?
+  feedback     String?
+  userId       Int?
+  user         User?    @relation(fields: [userId], references: [id])
+}
+
+model Student {
+  id                Int      @id @default(autoincrement())
+  name              String
+  rollNo            String   @unique
+  email             String   @unique
+  phone             String?
+  year              String
+  attendance        Float    @default(0)
+  achievementsCount Int      @default(0)
+  departmentId      Int?
+  status            String   @default("active")
+  cgpa              Float?
+  branch            String?
+  mentor            String?
+  avatar            String?
+  lastActive        String?
+  department        Department? @relation(fields: [departmentId], references: [id])
+}
+
+model Department {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  code     String    @unique
+  head     String?
+  students Student[]
+}
+
+model Faculty {
+  id             Int    @id @default(autoincrement())
+  name           String
+  email          String @unique
+  department     String
+  specialization String
+  experience     Int
+}
+
+model AcademicRecord {
+  id        Int    @id @default(autoincrement())
+  studentId Int
+  semester  String
+  subject   String
+  credits   Int
+  grade     String
+  marks     Float
+}
+
+model Portfolio {
+  id        Int      @id @default(autoincrement())
+  studentId Int
+  title     String
+  template  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  publicUrl String?
+}
+
+model Ticket {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  priority    String   @default("Low") // Low, Medium, High
+  status      String   @default("Open") // Open, In Progress, Resolved, Closed
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  category    String
+  assignedTo  String?
+}
