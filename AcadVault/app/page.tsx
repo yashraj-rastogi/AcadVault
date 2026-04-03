@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { GraduationCap, Users, BookOpen, Award, Shield, Sparkles, ArrowRight, Zap, CheckCircle } from "lucide-react"
 
@@ -36,9 +37,7 @@ export default function HomePage() {
       <nav className="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-4">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #4edea3, #10b981)' }}>
-              <GraduationCap className="h-6 w-6" style={{ color: '#003824' }} />
-            </div>
+            <Image src="/logo.png" alt="AcadVault Logo" width={40} height={40} className="rounded-xl shadow-[0_0_15px_rgba(78,222,163,0.3)] transition-transform hover:scale-105 duration-300" />
             <span className="text-xl font-bold" style={{ color: '#dae2fd' }}>AcadVault</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
@@ -245,7 +244,7 @@ export default function HomePage() {
       <footer className="py-10 px-6" style={{ borderTop: '1px solid rgba(78, 222, 163, 0.06)' }}>
         <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <GraduationCap className="h-5 w-5" style={{ color: '#4edea3' }} />
+            <Image src="/logo.png" alt="AcadVault Logo" width={24} height={24} className="rounded-md" />
             <span className="text-sm font-semibold" style={{ color: '#dae2fd' }}>AcadVault</span>
           </div>
           <div className="flex items-center gap-6">

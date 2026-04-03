@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { LayoutDashboard, Trophy, FileText, GraduationCap, Settings, HelpCircle, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -26,9 +27,7 @@ export function StudentSidebar() {
       <SidebarHeader>
         <div className="flex items-center justify-between px-2">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <GraduationCap className="h-5 w-5 text-primary-foreground" />
-            </div>
+            <Image src="/logo.png" alt="AcadVault Logo" width={32} height={32} className="rounded-lg shadow-[0_0_10px_rgba(78,222,163,0.2)]" />
             <span className="text-lg font-semibold text-sidebar-foreground">AcadVault</span>
           </div>
           <Button variant="ghost" size="sm" asChild className="md:hidden">

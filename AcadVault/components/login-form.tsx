@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { GraduationCap, Eye, EyeOff, Sparkles } from "lucide-react"
 import { Input } from "@/components/ui/input"
@@ -91,10 +92,7 @@ export function LoginForm() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2.5 mb-5">
-            <div className="h-11 w-11 rounded-xl flex items-center justify-center animate-glow-pulse"
-                 style={{ background: 'linear-gradient(135deg, #4edea3, #10b981)' }}>
-              <GraduationCap className="h-6 w-6" style={{ color: '#003824' }} />
-            </div>
+            <Image src="/logo.png" alt="AcadVault Logo" width={44} height={44} className="rounded-xl shadow-[0_0_15px_rgba(78,222,163,0.3)] animate-glow-pulse" />
             <h1 className="text-2xl font-bold" style={{ color: '#dae2fd' }}>AcadVault</h1>
           </div>
           <h2 className="text-xl font-bold mb-1" style={{ color: '#dae2fd' }}>Welcome Back</h2>

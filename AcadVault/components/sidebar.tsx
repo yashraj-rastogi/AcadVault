@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { LayoutDashboard, Trophy, FileText, GraduationCap, Settings, HelpCircle } from "lucide-react"
 
@@ -16,9 +17,7 @@ export function Sidebar() {
     <div className="flex h-full w-64 flex-col bg-sidebar border-r border-sidebar-border">
       <div className="flex h-16 shrink-0 items-center px-6">
         <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-            <GraduationCap className="h-5 w-5 text-primary-foreground" />
-          </div>
+          <Image src="/logo.png" alt="AcadVault Logo" width={32} height={32} className="rounded-lg shadow-[0_0_10px_rgba(78,222,163,0.2)]" />
           <span className="text-lg font-semibold text-sidebar-foreground">Student Portal</span>
         </div>
       </div>
