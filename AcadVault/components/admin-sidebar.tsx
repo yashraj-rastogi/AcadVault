@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Image from "next/image"
+import { usePathname, useRouter } from "next/navigation"
 import { Shield, Users, FileText, BarChart3, Settings, LogOut } from "lucide-react"
 import {
   Sidebar,
@@ -21,6 +22,13 @@ const navigation = [
 
 export function AdminSidebar() {
   const pathname = usePathname()
+  const router = useRouter()
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken")
+    localStorage.removeItem("currentUser")
+    router.push("/auth/login")
+  }
 
   return (
     <Sidebar collapsible="icon">
@@ -54,11 +62,9 @@ export function AdminSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link href="/auth/login">
-                <LogOut className="h-4 w-4" />
-                <span>Logout</span>
-              </Link>
+            <SidebarMenuButton onClick={handleLogout} className="text-red-500 hover:text-red-600 hover:bg-red-500/10">
+              <LogOut className="h-4 w-4" />
+              <span>Logout</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

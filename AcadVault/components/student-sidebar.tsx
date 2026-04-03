@@ -1,6 +1,9 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
-import { LayoutDashboard, Trophy, FileText, GraduationCap, Settings, HelpCircle, ArrowLeft } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { LayoutDashboard, Trophy, FileText, GraduationCap, Settings, HelpCircle, ArrowLeft, LogOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sidebar,
@@ -22,6 +25,14 @@ const navigation = [
 ]
 
 export function StudentSidebar() {
+  const router = useRouter()
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken")
+    localStorage.removeItem("currentUser")
+    router.push("/auth/login")
+  }
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -56,13 +67,15 @@ export function StudentSidebar() {
         </SidebarMenu>
       </SidebarContent>
 
-      <SidebarFooter className="md:hidden">
-        <Button variant="ghost" size="sm" asChild className="w-full justify-start">
-          <Link href="/">
-            <ArrowLeft className="h-4 w-4" />
-            <span>Back to Home</span>
-          </Link>
-        </Button>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton onClick={handleLogout} className="text-red-500 hover:text-red-600 hover:bg-red-500/10">
+              <LogOut className="h-4 w-4" />
+              <span>Logout</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
   )
