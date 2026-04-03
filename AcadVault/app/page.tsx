@@ -203,7 +203,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section id="stats" className="py-24 px-6">
+      {/* <section id="stats" className="py-24 px-6">
         <div className="container mx-auto max-w-4xl">
           <div className="glass-card rounded-2xl p-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -221,7 +221,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-24 px-6 relative overflow-hidden">
@@ -252,7 +252,7 @@ export default function HomePage() {
             <a href="#" className="link-emerald text-xs" style={{ color: '#86948a' }}>Terms of Service</a>
             <a href="#" className="link-emerald text-xs" style={{ color: '#86948a' }}>Support</a>
           </div>
-          <div className="text-xs" style={{ color: '#3c4a42' }}>© 2024 AcadVault. All rights reserved.</div>
+          <div className="text-xs" style={{ color: '#3c4a42' }}>© 2025 AcadVault. All rights reserved <br /> Yashraj Rastogi.</div>
         </div>
       </footer>
     </div>
