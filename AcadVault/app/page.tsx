@@ -1,7 +1,35 @@
+"use client";
+
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { GraduationCap, Users, BookOpen, Award, Shield, Sparkles, ArrowRight, Zap, CheckCircle } from "lucide-react"
 
 export default function HomePage() {
+  const router = useRouter();
+
+  const handlePortalAccess = (e: React.MouseEvent, portalHref: string) => {
+    e.preventDefault();
+    const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
+    const currentUser = typeof window !== 'undefined' ? localStorage.getItem('currentUser') : null;
+
+    if (!token || !currentUser) {
+      router.push('/auth/login');
+      return;
+    }
+
+    try {
+      const user = JSON.parse(currentUser);
+      if (user?.role === 'admin') {
+        router.push('/admin');
+      } else if (user?.role === 'faculty') {
+        router.push('/faculty');
+      } else {
+        router.push('/student');
+      }
+    } catch {
+      router.push('/auth/login');
+    }
+  };
   return (
     <div className="min-h-screen aurora-bg" style={{ background: '#0b1326' }}>
       {/* Floating Navigation */}
@@ -159,6 +187,7 @@ export default function HomePage() {
                   </div>
 
                   <Link href={portal.href}
+                        onClick={(e) => handlePortalAccess(e, portal.href)}
                         className="block w-full text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300"
                         style={{
                           background: `rgba(${portal.color === '#4edea3' ? '78,222,163' : portal.color === '#b9c7e0' ? '185,199,224' : '252,124,120'}, 0.1)`,
