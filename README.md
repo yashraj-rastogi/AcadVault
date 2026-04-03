@@ -75,21 +75,6 @@ AcadVault/
    npm run dev
    ```
    Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## ☁️ Deployment on Vercel
-
-This repository is optimized and ready for immediate deployment on Vercel.
-
-1. Publish your code to a Git provider (GitHub, GitLab, or Bitbucket).
-2. Go to your [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New** -> **Project**.
-3. Import your repository.
-4. **Important**:
-   - **Root Directory**: Since the Next.js app sits inside the `AcadVault` folder, make sure to configure the **Root Directory** setting to `AcadVault` during the Vercel project setup.
-   - **Framework Preset**: Vercel should automatically detect `Next.js`.
-   - **Environment Variables**: Add `DATABASE_URL` and any other secrets from your `.env` file to your Vercel project environment variables.
-5. Click **Deploy**. Vercel will automatically run the deployment. 
-
-*(Note: The build process automatically executes Prisma Client generation via the pre-configured `postinstall` script in `package.json`).*
-
+   
 ---
-© 2024 AcadVault. All rights reserved.
+© 2025 AcadVault. All rights reserved @yashraj-rastogi.
